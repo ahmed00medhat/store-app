@@ -1,7 +1,6 @@
 
-  product-list works!
   <ul *ngFor= "let product of products">
-    <li>{{product.id}}:{{product.name}}</li>
-
+    <li (click)="selectedProduct = product">{{product.id}}:{{product.name}}</li>
   </ul>
+  <app-product-detail [product] = "selectedProduct" (deleteProduct)="delete($event)"></app-product-detail>
 

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, Output} from '@angular/core';
 import {Product} from '../product';
 
 
@@ -9,17 +9,20 @@ import {Product} from '../product';
 })
 export class ProductListComponent implements OnInit {
   products: Product[];
-  myproduct: Product;
+  @Output()
+  selectedProduct: Product;
+  //myproduct: Product;
   constructor() {
-    this.myproduct = new Product(5, 'iphone', 1000, 'iPhone 7');
-    this.products = [this.myproduct];
-    console.log(this.products);
-    console.log(this.myproduct);
+    //let myproduct = new Product(5, 'iphone', 1000, 'iPhone 7');
+    this.products = [new Product(5, 'iphone', 1000, 'iPhone 7'),
+      new Product(8, 'Samsung TV', 1000, '50" OLED TV')];
+    //console.log(this.products);
+    //console.log(this.myproduct);
   }
 
-  ngOnInit() {
+  ngOnInit() {}
 
-
+  delete(product: Product){
+    this.products.splice(this.products.indexOf(product),1);
   }
-
 }
