@@ -1,0 +1,37 @@
+
+<div class="panel panel-default">
+  <div (click)="toggleCart()" class="panel-heading">
+    <span class="glyphicon" [class.glyphicon-minus]="showCart" [class.glyphicon-plus]="!showCart"></span>
+    <span >Number of Items in cart: {{getNumberOfItems()}}</span>
+  </div>
+  <div class="panel-body" *ngIf="showCart">
+
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <td>Name</td>
+          <td>Description</td>
+          <td>Price</td>
+          <td>Quantity</td>
+          <td>Sub Total</td>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr *ngFor="let product of products">
+          <td>{{product.getItem().name}}</td>
+          <td>{{product.getItem().description}}</td>
+          <td>{{product.getItem().price}}</td>
+          <td>{{product.getQty()}}</td>
+          <td>{{product.getItem() | total:product.getQty()}}</td>
+        </tr>
+      </tbody>
+      <tfoot>
+        <tr class="">
+          <td colspan="4"></td>
+          <td>total {{getCartTotal()}}</td>
+        </tr>
+      </tfoot>
+    </table>
+  </div>
+</div>

@@ -5,6 +5,9 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { ProductListComponent } from './product-list/product-list.component';
 import { ProductDetailComponent } from './product-detail/product-detail.component';
+import {CartModule} from './cart/cart.module';
+import {CartItemsComponent} from './cart/cart-items/cart-items.component';
+import {CartService} from './cart/cart-items/cart.service';
 
 
 
@@ -15,7 +18,8 @@ import { ProductDetailComponent } from './product-detail/product-detail.componen
     ProductDetailComponent,
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    CartModule
   ],
   providers: [],
   bootstrap: [AppComponent]

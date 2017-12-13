@@ -1,5 +1,6 @@
 <span *ngIf="product">
   {{product.name}}|{{product.price}}|{{product.description}}
-  <button class="btn btn-primary"(click)="requestDelete()">Delete</button>
+  <span class="glyphicon glyphicon-remove" (click)="requestDelete()"></span>
+  <button (click)="addToCart()" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-plus"></span>&nbsp;Add to Cart</button>
 </span>
 

@@ -17,15 +17,16 @@ export class ProductListComponent implements OnInit {
 
   constructor(private productService: ProductService) {
 
-    //this.products = productService.getAllProducts();
+    // this.products = productService.getAllProducts();
 
   }
 
   ngOnInit() {
     this.productService.getAllProducts().subscribe(products => this.products = products);
+    // this.products = this.productService.getAllProducts();
   }
 
-  delete(product: Product){
-    this.products.splice(this.products.indexOf(product),1);
+  delete(product: Product) {
+    this.products.splice(this.products.indexOf(product), 1);
   }
 }
