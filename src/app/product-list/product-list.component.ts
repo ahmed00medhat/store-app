@@ -1,4 +1,4 @@
-import {Component, OnInit, Output} from '@angular/core';
+import {Component, Input, OnInit, Output} from '@angular/core';
 import {Product} from '../product';
 import {ProductService} from './product.service';
 
@@ -7,10 +7,11 @@ import {ProductService} from './product.service';
   selector: 'app-product-list',
   templateUrl: './product-list.component.html',
   styleUrls: ['./product-list.component.css'],
-  providers: [ProductService],
+  //providers: [ProductService],
 })
 export class ProductListComponent implements OnInit {
-  products: Product[];
+
+  products$: Product[];
 
   @Output()
   selectedProduct: Product;
@@ -22,11 +23,13 @@ export class ProductListComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.productService.getAllProducts().subscribe(products => this.products = products);
+    this.products$ = this.productService.getAllProducts();
+    const obProducts = this.productService.obProduct;
+    obProducts.subscribe(products => this.products$ = products);
     // this.products = this.productService.getAllProducts();
   }
 
   delete(product: Product) {
-    this.products.splice(this.products.indexOf(product), 1);
+    this.products$.splice(this.products$.indexOf(product), 1);
   }
 }
